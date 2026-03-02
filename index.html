@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-<style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -80,8 +79,109 @@ button {
   border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
+<style>
+/* RESET DASAR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-button:hover {
+
+/* BACKGROUND RAMADHAN PREMIUM */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #062c30, #0f4c4c, #145c5a);
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Bintang lembut */
+body::before {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: url("https://www.transparenttextures.com/patterns/stardust.png");
+  opacity: 0.15;
+  animation: starsMove 80s linear infinite;
+  z-index: -2;
+}
+
+@keyframes starsMove {
+  from { transform: translate(0,0); }
+  to { transform: translate(-400px,-400px); }
+}
+
+/* Bulan Glow */
+.moon {
+  position: fixed;
+  top: 60px;
+  right: 60px;
+  width: 110px;
+  height: 110px;
+  background: radial-gradient(circle at 30% 30%, #fff8dc, gold);
+  border-radius: 50%;
+  box-shadow: 0 0 40px gold;
+  z-index: -1;
+}
+
+/* Container Buku */
+.container {
+  padding: 40px 20px;
+}
+
+/* Judul */
+h1 {
+  font-size: 28px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  color: gold;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+/* CARD PREMIUM GLASS */
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 320px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+  transition: 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+}
+
+/* Gambar Buku */
+.card img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+/* Tombol Premium */
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 18px;
+  background: linear-gradient(45deg, gold, orange);
+  color: black;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
   opacity: 0.8;
 }
 </style>
