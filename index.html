@@ -194,11 +194,117 @@ p {
 .btn:hover {
   opacity: 0.8;
 }
+  /* === FADE IN SCROLL === */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === LENTERA GANTUNG === */
+.lantern {
+  position: fixed;
+  top: 0;
+  width: 60px;
+  animation: swing 4s ease-in-out infinite;
+}
+
+.lantern.left {
+  left: 40px;
+}
+
+.lantern.right {
+  right: 40px;
+}
+
+@keyframes swing {
+  0% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+/* === COUNTDOWN BOX === */
+.countdown {
+  margin: 20px auto;
+  font-size: 18px;
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 15px;
+  display: inline-block;
+  backdrop-filter: blur(10px);
+}
+
+/* === BUTTON GLOW PREMIUM === */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+  top: -50%;
+  left: -50%;
+  transform: rotate(25deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { left: -50%; }
+  100% { left: 150%; }
+}
 </style>
 </head>
+<script>
+// Fade In Saat Scroll
+const faders = document.querySelectorAll('.card');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+});
 
+faders.forEach(card => {
+  card.classList.add('fade-in');
+  observer.observe(card);
+});
+
+// Countdown Idul Fitri
+const targetDate = new Date("April 10, 2026 00:00:00").getTime();
+const timer = document.getElementById("timer");
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
+
+  timer.innerHTML = `${days}h ${hours}j ${minutes}m ${seconds}d`;
+}, 1000);
+</script>
 <body>
-  <div class="moon"></div>
+  <!-- Lentera -->
+<img src="https://i.ibb.co/6XbqG6J/lantern.png" class="lantern left">
+<img src="https://i.ibb.co/6XbqG6J/lantern.png" class="lantern right">
+
+<!-- Countdown -->
+<div class="countdown">
+  ⏳ Menuju Idul Fitri: <span id="timer"></span>
+</div>
+<div class="moon"></div>
 
 <img class="mosque" 
 src="https://i.ibb.co/7QpKsCX/mosque-silhouette.png">
