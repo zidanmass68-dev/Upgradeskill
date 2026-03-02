@@ -129,7 +129,11 @@ body::before {
 
 /* Container Buku */
 .container {
-  padding: 40px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  }
 }
 
 /* Judul */
@@ -165,10 +169,13 @@ p {
 /* FIX PRESISI GAMBAR */
 .card img {
   width: 100%;
-  height: 350px;        /* Tinggi konsisten */
-  object-fit: cover;    /* Isi penuh tanpa gepeng */
+  height: auto;
+  max-height: 380px;
+  object-fit: contain;
   border-radius: 15px;
   display: block;
+  margin: 0 auto 15px;
+  }
 }
 
 /* Tombol Premium */
